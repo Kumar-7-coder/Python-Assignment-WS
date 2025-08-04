@@ -1,0 +1,195 @@
+# 1. Global Counter
+# Write a program that tracks the number of function calls using a global variable.
+call_count = 0
+
+def log_function_call():
+    global call_count
+    call_count += 1
+    print(f"Function has been called {call_count} time(s).")
+
+log_function_call()
+log_function_call()
+log_function_call()
+print("-" * 20)
+
+
+# 2. Update Nested Variable
+# Use nonlocal to update a counter in a nested function that's called multiple times.
+def outer_function():
+    count = 0
+    def inner_function():
+        nonlocal count
+        count += 1
+        print(f"Inner function has been called {count} time(s).")
+    return inner_function
+
+my_counter = outer_function()
+my_counter()
+my_counter()
+my_counter()
+print("-" * 20)
+
+
+# 3. Weather Logger
+# Create a global variable weather and write a function to update and display it.
+weather = "sunny"
+
+def update_weather(new_weather):
+    global weather
+    weather = new_weather
+    print(f"The weather is now {weather}.")
+
+print(f"Initial weather: {weather}")
+update_weather("rainy")
+print("-" * 20)
+
+
+# 4. Toggle Dark/Light Theme
+# Use a global variable theme to switch between "dark" and "light" themes in a function.
+theme = "light"
+
+def toggle_theme():
+    global theme
+    if theme == "light":
+        theme = "dark"
+    else:
+        theme = "light"
+    print(f"Theme switched to {theme} mode.")
+
+print(f"Initial theme: {theme}")
+toggle_theme()
+toggle_theme()
+toggle_theme()
+print("-" * 20)
+
+
+# 5. Session Timer
+# Build a timer function that uses nonlocal to track and update minutes inside a nested loop.
+def session_timer():
+    minutes_passed = 0
+    def tick():
+        nonlocal minutes_passed
+        minutes_passed += 1
+        print(f"Session has been active for {minutes_passed} minute(s).")
+    return tick
+
+timer = session_timer()
+timer()
+timer()
+timer()
+print("-" * 20)
+
+
+# 6. Task Tracker
+# Track how many tasks are completed using a global counter updated in multiple functions.
+completed_tasks = 0
+
+def complete_task_one():
+    global completed_tasks
+    print("Task 1 completed.")
+    completed_tasks += 1
+
+def complete_task_two():
+    global completed_tasks
+    print("Task 2 completed.")
+    completed_tasks += 1
+
+print(f"Tasks completed initially: {completed_tasks}")
+complete_task_one()
+complete_task_two()
+print(f"Total tasks completed: {completed_tasks}")
+print("-" * 20)
+
+
+# 7. Wallet System
+# Create a wallet with balance: Use global and local scopes to deposit/withdraw funds safely.
+balance = 100
+
+def deposit(amount):
+    global balance
+    if amount > 0:
+        balance += amount
+        print(f"Deposited ${amount}. New balance is ${balance}.")
+    else:
+        print("Deposit amount must be positive.")
+
+def withdraw(amount):
+    global balance
+    if amount > 0 and amount <= balance:
+        balance -= amount
+        print(f"Withdrew ${amount}. New balance is ${balance}.")
+    else:
+        print("Invalid withdrawal amount.")
+
+print(f"Initial balance: ${balance}")
+deposit(50)
+withdraw(25)
+withdraw(150)
+print("-" * 20)
+
+
+# 8. Scoreboard Tracker
+# Create a global score variable and a function add_score(points) that updates the score after each game round.
+score = 0
+
+def add_score(points):
+    global score
+    score += points
+    print(f"Points added: {points}. Current score: {score}.")
+
+print(f"Initial score: {score}")
+add_score(10)
+add_score(5)
+add_score(20)
+print("-" * 20)
+
+
+# 9. Event Logger with Nonlocal Count
+# Create an event_logger() function that defines a nested log() function to count how many times an event is logged using nonlocal.
+def event_logger():
+    log_count = 0
+    def log(event):
+        nonlocal log_count
+        log_count += 1
+        print(f"[{log_count}] Event logged: {event}")
+    return log
+
+logger = event_logger()
+logger("User login")
+logger("Data updated")
+logger("Report generated")
+print("-" * 20)
+
+
+# 10. Stock Quantity Manager
+# Create a global stock dictionary. Write two functions: add_stock(item, qty) and sell_item(item, qty) that modify the global stock quantities.
+stock = {
+    "Laptop": 10,
+    "Mouse": 50,
+    "Keyboard": 25
+}
+
+def add_stock(item, qty):
+    global stock
+    if item in stock:
+        stock[item] += qty
+        print(f"Added {qty} of {item}. New stock for {item}: {stock[item]}.")
+    else:
+        print(f"{item} is not a valid stock item.")
+
+def sell_item(item, qty):
+    global stock
+    if item in stock:
+        if stock[item] >= qty:
+            stock[item] -= qty
+            print(f"Sold {qty} of {item}. Remaining stock for {item}: {stock[item]}.")
+        else:
+            print(f"Not enough stock of {item} to sell {qty}.")
+    else:
+        print(f"{item} is not a valid stock item.")
+
+print("Initial stock:", stock)
+add_stock("Laptop", 5)
+sell_item("Mouse", 10)
+sell_item("Keyboard", 30) # This should fail due to insufficient stock
+print("Final stock:", stock)
