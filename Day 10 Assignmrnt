@@ -1,0 +1,84 @@
+# 1. Contact Form with Optional Fields
+# Design a function submit_form(name, email, phone=None) to handle user contact info. Print all submitted data.
+def submit_form(name, email, phone=None):
+    """
+    Submits a contact form with name, email, and an optional phone number.
+    """
+    print("Contact Form Submission:")
+    print(f"Name: {name}")
+    print(f"Email: {email}")
+    if phone:
+        print(f"Phone: {phone}")
+    else:
+        print("Phone: Not provided")
+    print("-" * 20)
+
+# Example usage
+submit_form("John Doe", "john.doe@example.com")
+submit_form("Jane Smith", "jane.smith@example.com", "555-1234")
+
+
+# 2. Shopping Cart Total with *args
+# Write a function calculate_total(*prices) that adds up any number of product prices and returns the total.
+def calculate_total(*prices):
+    """
+    Calculates the total of any number of prices passed as arguments.
+    """
+    total = sum(prices)
+    return total
+
+# Example usage
+print("2. Shopping Cart Total:")
+print(f"Total for items costing $10, $20, $5: ${calculate_total(10, 20, 5)}")
+print(f"Total for items costing $15.50, $2.75: ${calculate_total(15.50, 2.75)}")
+print("-" * 20)
+
+
+# 3. Display Book Info with **kwargs
+# Create a function book_info(**kwargs) that accepts keyword arguments like title, author, and price, and prints them.
+def book_info(**kwargs):
+    """
+    Prints book information from keyword arguments.
+    """
+    print("3. Book Information:")
+    for key, value in kwargs.items():
+        print(f"{key.replace('_', ' ').capitalize()}: {value}")
+    print("-" * 20)
+
+# Example usage
+book_info(title="The Hitchhiker's Guide to the Galaxy", author="Douglas Adams", price=12.99)
+book_info(title="1984", author="George Orwell")
+
+
+# 4. Multi-Item Billing
+# Create a function print_bill(**items) that accepts item prices and prints the total amount.
+def print_bill(**items):
+    """
+    Prints a bill for multiple items and calculates the total.
+    """
+    print("4. Multi-Item Billing:")
+    total_amount = 0
+    print("Items:")
+    for item, price in items.items():
+        print(f"- {item}: ${price}")
+        total_amount += price
+    print("-" * 10)
+    print(f"Total Amount: ${total_amount:.2f}")
+    print("-" * 20)
+
+# Example usage
+print_bill(apple=1.50, banana=0.75, milk=3.20)
+
+
+# 5. User Settings Handler
+# Write a function save_settings(**options) to accept user settings like theme, language, etc., and display them.
+def save_settings(**options):
+    """
+    Saves and displays user settings from keyword arguments.
+    """
+    print("5. User Settings Handler:")
+    print("Saving the following settings:")
+    for setting, value in options.items():
+        print(f"- {setting.capitalize()}: {value}")
+    print("Settings saved successfully!")
+    print("-" * 20)
