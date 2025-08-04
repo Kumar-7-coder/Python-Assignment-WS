@@ -1,0 +1,107 @@
+# 1. Loop through a Tuple
+# Create a tuple of 5 favorite movies and print each one using a loop.
+favorite_movies = ("Inception", "The Matrix", "Interstellar", "Parasite", "Pulp Fiction")
+print("1. Looping through a Tuple:")
+for movie in favorite_movies:
+    print(movie)
+print("-" * 20)
+
+
+# 2. Use enumerate() with a List
+# Create a list of fruits and print each fruit with its index.
+fruits = ["Apple", "Banana", "Cherry", "Date"]
+print("2. Using enumerate() with a List:")
+for index, fruit in enumerate(fruits):
+    print(f"Index {index}: {fruit}")
+print("-" * 20)
+
+
+# 3. Use .items() on a Dictionary
+# Create a dictionary of 3 students and their grades. Print: "Student: Grade" format.
+student_grades = {
+    "Alice": "A",
+    "Bob": "B+",
+    "Charlie": "C"
+}
+print("3. Using .items() on a Dictionary:")
+for student, grade in student_grades.items():
+    print(f"{student}: {grade}")
+print("-" * 20)
+
+
+# 4. Use .values() on a Dictionary
+# Create a dictionary with countries as keys and capitals as values. Print only the capitals.
+country_capitals = {
+    "USA": "Washington D.C.",
+    "France": "Paris",
+    "Japan": "Tokyo"
+}
+print("4. Using .values() on a Dictionary:")
+for capital in country_capitals.values():
+    print(capital)
+print("-" * 20)
+
+
+# 5. Loop through a Set
+# Create a set of animal names and print each one.
+animals = {"Lion", "Tiger", "Bear", "Elephant"}
+print("5. Looping through a Set:")
+for animal in animals:
+    print(animal)
+print("-" * 20)
+
+
+# 6. Loop Dictionary Keys Only
+# Create a dictionary of products and their prices. Print only the product names.
+products = {
+    "Pen": 10,
+    "Notebook": 40,
+    "Eraser": 5
+}
+print("6. Looping through Dictionary Keys Only:")
+for product_name in products.keys():
+    print(product_name)
+print("-" * 20)
+
+
+# 7. Loop with range() to Even Numbers
+# Print the first 10 even numbers using a loop and range().
+print("7. Looping with range() for Even Numbers:")
+for i in range(2, 21, 2):
+    print(i)
+print("-" * 20)
+
+
+# 8. Loop Through Nested Dictionary
+# Create a dictionary of students where each value is another dictionary with details (age and grade). Print each student's name and grade.
+students = {
+    "Amit": {"age": 20, "grade": "A"},
+    "Riya": {"age": 21, "grade": "B-"},
+    "Kunal": {"age": 22, "grade": "A-"}
+}
+print("8. Looping through a Nested Dictionary:")
+for student_name, details in students.items():
+    print(f"Student: {student_name}, Grade: {details['grade']}")
+print("-" * 20)
+
+
+# 9. Loop Through a String
+# Take a user input string and print each character on a new line.
+print("9. Looping through a String:")
+try:
+    user_string = input("Enter a string: ")
+    for char in user_string:
+        print(char)
+except EOFError:
+    # Handle cases where input() is not interactive
+    print("No input received. Skipping string loop.")
+print("-" * 20)
+
+
+# 10. Use enumerate() to Build a Menu
+# Display a menu of food items with numbering for user selection.
+menu = ["Pizza", "Burger", "Pasta", "Salad"]
+print("10. Using enumerate() to build a menu:")
+for index, item in enumerate(menu, 1):
+    print(f"{index}. {item}")
+print("-" * 20)
