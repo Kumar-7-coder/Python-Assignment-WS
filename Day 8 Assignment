@@ -1,0 +1,114 @@
+# 1. Create a function greet_teacher(name) that greets the teacher by name.
+def greet_teacher(name):
+    print(f"Hello, {name}! Good morning.")
+
+# Example usage
+greet_teacher("Mrs. Davis")
+print("-" * 20)
+
+
+# 2. Write a function multiply(a, b) that returns the product.
+def multiply(a, b):
+    return a * b
+
+# Example usage
+product = multiply(5, 7)
+print(f"2. The product of 5 and 7 is: {product}")
+print("-" * 20)
+
+
+# 3. Write a function to calculate the total price after tax.
+def calculate_total_price(price, tax_rate):
+    tax_amount = price * tax_rate
+    total_price = price + tax_amount
+    return total_price
+
+# Example usage
+total = calculate_total_price(100, 0.08)  # 8% tax
+print(f"3. Total price after tax: ${total:.2f}")
+print("-" * 20)
+
+
+# 4. Define a function to print employee details (name, position, salary).
+def print_employee_details(name, position, salary):
+    print("4. Employee Details:")
+    print(f"Name: {name}")
+    print(f"Position: {position}")
+    print(f"Salary: ${salary:.2f}")
+
+# Example usage
+print_employee_details("Alice Johnson", "Software Engineer", 75000)
+print("-" * 20)
+
+
+# 5. Write a function to convert Celsius to Fahrenheit.
+def celsius_to_fahrenheit(celsius):
+    fahrenheit = (celsius * 9/5) + 32
+    return fahrenheit
+
+# Example usage
+temp_c = 25
+temp_f = celsius_to_fahrenheit(temp_c)
+print(f"5. {temp_c}°C is equal to {temp_f}°F")
+print("-" * 20)
+
+
+# 6. Create a function that returns the square of a number.
+def square(number):
+    return number ** 2
+
+# Example usage
+num_to_square = 9
+squared_num = square(num_to_square)
+print(f"6. The square of {num_to_square} is: {squared_num}")
+print("-" * 20)
+
+
+# 7. Write a function that calculates simple interest.
+def calculate_simple_interest(principal, rate, time):
+    interest = (principal * rate * time) / 100
+    return interest
+
+# Example usage
+p, r, t = 1000, 5, 2
+simple_interest = calculate_simple_interest(p, r, t)
+print(f"7. The simple interest for a principal of ${p} at a rate of {r}% for {t} years is: ${simple_interest}")
+print("-" * 20)
+
+
+# 8. Create a function to print a birthday message with name and age.
+def birthday_message(name, age):
+    print(f"8. Happy Birthday, {name}! You are now {age} years old.")
+
+# Example usage
+birthday_message("Michael", 30)
+print("-" * 20)
+
+
+# 9. Create a function to split a bill among friends.
+def split_bill(total_bill, num_friends):
+    if num_friends > 0:
+        share = total_bill / num_friends
+        return share
+    else:
+        return "Cannot split among zero friends."
+
+# Example usage
+bill_total = 150
+friends = 3
+share_per_person = split_bill(bill_total, friends)
+print(f"9. Each friend should pay: ${share_per_person:.2f}")
+print("-" * 20)
+
+
+# 10. Create a function that converts hours into minutes and seconds.
+def convert_hours(hours):
+    minutes = hours * 60
+    seconds = minutes * 60
+    return minutes, seconds
+
+# Example usage
+h = 2
+minutes_result, seconds_result = convert_hours(h)
+print(f"10. {h} hours is equal to {minutes_result} minutes and {seconds_result} seconds.")
+print("-" * 20)
