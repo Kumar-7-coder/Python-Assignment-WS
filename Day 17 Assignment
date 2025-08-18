@@ -1,0 +1,96 @@
+# Assignment 1: Playlist Manager
+playlist = ["Song A", "Song B", "Song C", "Song D", "Song E"]
+print("Original playlist:", playlist)
+playlist.append("Song F")
+playlist.append("Song G")
+print("After adding 2 songs:", playlist)
+playlist.insert(2, "New Song")
+print("After inserting at position 2:", playlist)
+playlist.remove("Song C")
+print("After removing Song C:", playlist)
+playlist.reverse()
+print("Reversed playlist:", playlist)
+
+print()
+
+# Assignment 2: Exam Scores
+exam_scores = [85, 92, 78, 96, 88, 76, 94]
+print("Original scores:", exam_scores)
+ascending_scores = sorted(exam_scores)
+print("Ascending order:", ascending_scores)
+descending_scores = sorted(exam_scores, reverse=True)
+print("Descending order:", descending_scores)
+above_80 = [score for score in exam_scores if score > 80]
+print(f"Students above 80: {len(above_80)} students")
+print("Scores above 80:", above_80)
+
+print()
+
+# Assignment 3: Travel Destinations
+destinations = ("Paris", "Tokyo", "London", "New York", "Sydney")
+print("Original destinations:", destinations)
+try:
+    destinations[0] = "Rome"
+except TypeError as e:
+    print("Cannot modify tuple:", str(e))
+country1, country2, country3, country4, country5 = destinations
+print("Unpacked variables:")
+print(f"First: {country1}, Second: {country2}, Third: {country3}")
+print(f"Fourth: {country4}, Fifth: {country5}")
+
+print()
+
+# Assignment 4: Employee Names
+employees = ["Alice", "Bob", "Charlie"]
+print("Original employees:", employees)
+employees.extend(["David", "Eve", "Frank"])
+print("After adding 3 more employees:", employees)
+if "Charlie" in employees:
+    charlie_index = employees.index("Charlie")
+    print(f"Charlie's index: {charlie_index}")
+removed_employee = employees.pop()
+print(f"Removed employee: {removed_employee}")
+print("Final employees list:", employees)
+
+print()
+
+# Assignment 5: Product Prices
+product_prices = [29.99, 15.50, 89.75, 45.00, 12.25, 67.80]
+print("Product prices:", product_prices)
+highest_price = max(product_prices)
+lowest_price = min(product_prices)
+average_price = sum(product_prices) / len(product_prices)
+print(f"Highest price: ${highest_price}")
+print(f"Lowest price: ${lowest_price}")
+print(f"Average price: ${average_price:.2f}")
+product_prices.clear()
+print("After clearing list:", product_prices)
+
+print()
+
+# Assignment 6: Weekly Temperatures
+weekly_temps = (22, 25, 28, 24, 26, 30, 27)
+print("Weekly temperatures:", weekly_temps)
+weekend_temps = weekly_temps[5:7]
+print("Weekend temperatures (Sat-Sun):", weekend_temps)
+temp_to_check = 26
+if temp_to_check in weekly_temps:
+    print(f"Temperature {temp_to_check}°C exists in the week")
+else:
+    print(f"Temperature {temp_to_check}°C does not exist in the week")
+
+print()
+
+# Assignment 7: Shopping Cart
+shopping_cart = ["Apple", "Banana", "Orange", "Milk", "Bread"]
+print("Original cart:", shopping_cart)
+new_items = ["Cheese", "Yogurt", "Eggs"]
+shopping_cart.extend(new_items)
+print("After adding new items:", shopping_cart)
+shopping_cart.sort()
+print("Sorted alphabetically:", shopping_cart)
+cart_copy = shopping_cart.copy()
+print("Copy of cart:", cart_copy)
+shopping_cart.clear()
+print("Original cart after clearing:", shopping_cart)
+print("Copy remains intact:", cart_copy)
