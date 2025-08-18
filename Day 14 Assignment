@@ -1,0 +1,232 @@
+# Assignment 1: Vehicle class with Car and Bike subclasses
+class Vehicle:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+    
+    def start_engine(self):
+        print(f"{self.brand} {self.model} engine started!")
+
+class Car(Vehicle):
+    def __init__(self, brand, model, fuel_type):
+        super().__init__(brand, model)
+        self.fuel_type = fuel_type
+    
+    def start_engine(self):
+        print(f"{self.brand} {self.model} car engine started with {self.fuel_type}!")
+
+class Bike(Vehicle):
+    def __init__(self, brand, model, engine_cc):
+        super().__init__(brand, model)
+        self.engine_cc = engine_cc
+    
+    def start_engine(self):
+        print(f"{self.brand} {self.model} bike ({self.engine_cc}CC) engine started!")
+
+maruti_car = Car("Maruti", "Swift", "Petrol")
+hero_bike = Bike("Hero", "Splendor", 125)
+maruti_car.start_engine()
+hero_bike.start_engine()
+
+# Assignment 2: Shape class with Circle and Rectangle subclasses
+import math
+
+class Shape:
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def area(self):
+        return math.pi * self.radius ** 2
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+
+circle = Circle(5)
+rectangle = Rectangle(10, 6)
+print(f"Circle area: {circle.area():.2f} sq meters")
+print(f"Rectangle area: {rectangle.area()} sq meters")
+
+# Assignment 3: BankAccount with encapsulation using deposit() and withdraw()
+class BankAccount:
+    def __init__(self, account_holder, initial_balance=0):
+        self.account_holder = account_holder
+        self.__balance = initial_balance
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f"₹{amount} deposited. New balance: ₹{self.__balance}")
+        else:
+            print("Deposit amount must be positive")
+    
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.__balance:
+            self.__balance -= amount
+            print(f"₹{amount} withdrawn. Remaining balance: ₹{self.__balance}")
+        else:
+            print("Invalid withdrawal amount or insufficient funds")
+    
+    def get_balance(self):
+        return self.__balance
+
+sbi_account = BankAccount("Rajesh Kumar", 5000)
+sbi_account.deposit(2000)
+sbi_account.withdraw(1500)
+print(f"Current balance: ₹{sbi_account.get_balance()}")
+
+# Assignment 4: Abstract Appliance class with Fan and Light subclasses
+from abc import ABC, abstractmethod
+
+class Appliance(ABC):
+    def __init__(self, brand, power_rating):
+        self.brand = brand
+        self.power_rating = power_rating
+    
+    @abstractmethod
+    def turn_on(self):
+        pass
+
+class Fan(Appliance):
+    def __init__(self, brand, power_rating, speed_levels):
+        super().__init__(brand, power_rating)
+        self.speed_levels = speed_levels
+    
+    def turn_on(self):
+        print(f"{self.brand} ceiling fan ({self.power_rating}W) turned ON with {self.speed_levels} speed levels")
+
+class Light(Appliance):
+    def __init__(self, brand, power_rating, light_type):
+        super().__init__(brand, power_rating)
+        self.light_type = light_type
+    
+    def turn_on(self):
+        print(f"{self.brand} {self.light_type} light ({self.power_rating}W) turned ON")
+
+bajaj_fan = Fan("Bajaj", 75, 5)
+philips_light = Light("Philips", 12, "LED")
+bajaj_fan.turn_on()
+philips_light.turn_on()
+
+# Assignment 5: Polymorphism with speak() method for Teacher, Student, and Principal
+class Person:
+    def __init__(self, name):
+        self.name = name
+    
+    def speak(self):
+        pass
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)
+        self.subject = subject
+    
+    def speak(self):
+        return f"Teacher {self.name}: Today we will learn {self.subject}"
+
+class Student(Person):
+    def __init__(self, name, grade):
+        super().__init__(name)
+        self.grade = grade
+    
+    def speak(self):
+        return f"Student {self.name}: I am studying in grade {self.grade}"
+
+class Principal(Person):
+    def __init__(self, name, school):
+        super().__init__(name)
+        self.school = school
+    
+    def speak(self):
+        return f"Principal {self.name}: Welcome to {self.school} school"
+
+people = [
+    Teacher("Priya Sharma", "Mathematics"),
+    Student("Arjun Patel", 10),
+    Principal("Dr. Rajesh Gupta", "Delhi Public School")
+]
+
+for person in people:
+    print(person.speak())
+
+# Assignment 6: Employee hierarchy with Manager and Director
+class Employee:
+    def __init__(self, name, employee_id, salary):
+        self.name = name
+        self.employee_id = employee_id
+        self.salary = salary
+    
+    def work(self):
+        print(f"{self.name} is working")
+    
+    def get_details(self):
+        return f"ID: {self.employee_id}, Name: {self.name}, Salary: ₹{self.salary}"
+
+class Manager(Employee):
+    def __init__(self, name, employee_id, salary, team_size):
+        super().__init__(name, employee_id, salary)
+        self.team_size = team_size
+    
+    def work(self):
+        print(f"Manager {self.name} is managing a team of {self.team_size} members")
+    
+    def conduct_meeting(self):
+        print(f"Manager {self.name} is conducting a team meeting")
+
+class Director(Manager):
+    def __init__(self, name, employee_id, salary, team_size, department):
+        super().__init__(name, employee_id, salary, team_size)
+        self.department = department
+    
+    def work(self):
+        print(f"Director {self.name} is overseeing {self.department} department with {self.team_size} employees")
+    
+    def strategic_planning(self):
+        print(f"Director {self.name} is doing strategic planning for {self.department}")
+
+emp = Employee("Amit Singh", "E001", 50000)
+mgr = Manager("Sunita Devi", "M001", 80000, 8)
+dir = Director("Vikram Malhotra", "D001", 150000, 25, "IT")
+
+print(emp.get_details())
+emp.work()
+print(mgr.get_details())
+mgr.work()
+mgr.conduct_meeting()
+print(dir.get_details())
+dir.work()
+dir.strategic_planning()
+
+# Assignment 7: Person class with private age attribute and getter/setter methods
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.__age = age
+    
+    def get_age(self):
+        return self.__age
+    
+    def set_age(self, age):
+        if 0 <= age <= 120:
+            self.__age = age
+            print(f"Age updated to {age} years")
+        else:
+            print("Invalid age! Age must be between 0 and 120")
+    
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.__age} years")
+
+person = Person("Kavya Reddy", 25)
+person.display_info()
+print(f"Current age: {person.get_age()}")
+person.set_age(30)
+person.set_age(150)
+person.display_info()
