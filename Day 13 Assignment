@@ -1,0 +1,175 @@
+# 1. Create a Person class with name and age. Add a method to display details.
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def display_details(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+person1 = Person("Rahul Sharma", 28)
+person2 = Person("Priya Patel", 25)
+person1.display_details()
+person2.display_details()
+
+# 2. Create a Car class with brand, model, and year. Add a method to print the full car name.
+class Car:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+    
+    def full_car_name(self):
+        print(f"{self.year} {self.brand} {self.model}")
+
+car1 = Car("Maruti Suzuki", "Swift", 2023)
+car2 = Car("Tata", "Nexon", 2022)
+car1.full_car_name()
+car2.full_car_name()
+
+# 3. Create a Product class with name and price. Create 2 product objects and print their details.
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+    
+    def display_product(self):
+        print(f"Product: {self.name}, Price: ₹{self.price}")
+
+product1 = Product("Basmati Rice", 150)
+product2 = Product("Amul Butter", 55)
+product1.display_product()
+product2.display_product()
+
+# 4. Create a Circle class that calculates area using radius.
+import math
+
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+    
+    def calculate_area(self):
+        area = math.pi * self.radius ** 2
+        return area
+    
+    def display_area(self):
+        print(f"Circle with radius {self.radius} has area: {self.calculate_area():.2f}")
+
+circle1 = Circle(7)
+circle2 = Circle(14)
+circle1.display_area()
+circle2.display_area()
+
+# 5. Add a class variable category = "Fruit" to a Fruit class and use it in all objects.
+class Fruit:
+    category = "Fruit"
+    
+    def __init__(self, name, color):
+        self.name = name
+        self.color = color
+    
+    def display_fruit(self):
+        print(f"Category: {self.category}, Name: {self.name}, Color: {self.color}")
+
+mango = Fruit("Mango", "Yellow")
+apple = Fruit("Apple", "Red")
+banana = Fruit("Banana", "Yellow")
+mango.display_fruit()
+apple.display_fruit()
+banana.display_fruit()
+
+# 6. Create a class Movie with title, rating, and genre. Add a method to display movie info.
+class Movie:
+    def __init__(self, title, rating, genre):
+        self.title = title
+        self.rating = rating
+        self.genre = genre
+    
+    def display_movie_info(self):
+        print(f"Movie: {self.title}, Rating: {self.rating}/10, Genre: {self.genre}")
+
+movie1 = Movie("3 Idiots", 8.4, "Comedy-Drama")
+movie2 = Movie("Dangal", 8.3, "Biographical Sports")
+movie3 = Movie("Baahubali", 8.0, "Action-Adventure")
+movie1.display_movie_info()
+movie2.display_movie_info()
+movie3.display_movie_info()
+
+# 7. Build a class Laptop with brand, RAM, and price. Create two laptops and compare their price.
+class Laptop:
+    def __init__(self, brand, ram, price):
+        self.brand = brand
+        self.ram = ram
+        self.price = price
+    
+    def display_specs(self):
+        print(f"Brand: {self.brand}, RAM: {self.ram}GB, Price: ₹{self.price}")
+    
+    def compare_price(self, other_laptop):
+        if self.price > other_laptop.price:
+            print(f"{self.brand} is more expensive than {other_laptop.brand}")
+        elif self.price < other_laptop.price:
+            print(f"{self.brand} is cheaper than {other_laptop.brand}")
+        else:
+            print(f"{self.brand} and {other_laptop.brand} have the same price")
+
+laptop1 = Laptop("Dell Inspiron", 8, 45000)
+laptop2 = Laptop("HP Pavilion", 16, 55000)
+laptop1.display_specs()
+laptop2.display_specs()
+laptop1.compare_price(laptop2)
+
+# 8. Define a class Employee with instance variables name, position, and salary. Add a method to give a raise.
+class Employee:
+    def __init__(self, name, position, salary):
+        self.name = name
+        self.position = position
+        self.salary = salary
+    
+    def display_employee(self):
+        print(f"Name: {self.name}, Position: {self.position}, Salary: ₹{self.salary}")
+    
+    def give_raise(self, amount):
+        self.salary += amount
+        print(f"{self.name} received a raise of ₹{amount}. New salary: ₹{self.salary}")
+
+emp1 = Employee("Amit Kumar", "Software Developer", 80000)
+emp2 = Employee("Sneha Gupta", "Data Analyst", 65000)
+emp1.display_employee()
+emp2.display_employee()
+emp1.give_raise(10000)
+emp2.give_raise(8000)
+
+# 9. Create a class BankAccount with deposit and withdraw methods. Handle balance updates.
+class BankAccount:
+    def __init__(self, account_holder, initial_balance=0):
+        self.account_holder = account_holder
+        self.balance = initial_balance
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"₹{amount} deposited. Current balance: ₹{self.balance}")
+        else:
+            print("Deposit amount must be positive")
+    
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print(f"₹{amount} withdrawn. Current balance: ₹{self.balance}")
+        elif amount > self.balance:
+            print("Insufficient balance")
+        else:
+            print("Withdrawal amount must be positive")
+    
+    def check_balance(self):
+        print(f"Account holder: {self.account_holder}, Balance: ₹{self.balance}")
+
+account1 = BankAccount("Rajesh Mehta", 5000)
+account2 = BankAccount("Kavya Singh", 10000)
+account1.check_balance()
+account1.deposit(2000)
+account1.withdraw(1500)
+account2.check_balance()
+account2.withdraw(3000)
+account2.deposit(5000)
