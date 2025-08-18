@@ -1,0 +1,110 @@
+# Assignment 1: Set Operations
+set1 = {101, 102, 103, 104, 105}
+set2 = {104, 105, 106, 107, 108}
+print("Set 1 (Class A students):", set1)
+print("Set 2 (Class B students):", set2)
+print("Students in both sets:", set1.intersection(set2))
+print("Students only in set1:", set1.difference(set2))
+print("All unique students:", set1.union(set2))
+
+print()
+
+# Assignment 2: Dictionary Phonebook
+phonebook = {"Rajesh": "9876543210", "Priya": "8765432109", "Amit": "7654321098"}
+print("Initial phonebook:", phonebook)
+phonebook["Sneha"] = "6543210987"
+print("After adding Sneha:", phonebook)
+phonebook["Rajesh"] = "9999888877"
+print("After updating Rajesh:", phonebook)
+search_name = "Priya"
+if search_name in phonebook:
+    print(f"{search_name}'s number: {phonebook[search_name]}")
+del phonebook["Amit"]
+print("After deleting Amit:", phonebook)
+
+print()
+
+# Assignment 3: Calculator with Dictionary
+def add(a, b):
+    return a + b
+
+def sub(a, b):
+    return a - b
+
+def mul(a, b):
+    return a * b
+
+def div(a, b):
+    return a / b if b != 0 else "Cannot divide by zero"
+
+calculator = {"add": add, "sub": sub, "mul": mul, "div": div}
+operation = "add"
+num1, num2 = 15, 25
+result = calculator[operation](num1, num2)
+print(f"Calculator: {num1} + {num2} = {result}")
+operation = "div"
+num1, num2 = 50, 10
+result = calculator[operation](num1, num2)
+print(f"Calculator: {num1} / {num2} = {result}")
+
+print()
+
+# Assignment 4: Word Frequency Counter
+paragraph = "Python is amazing Python is powerful Python programming is fun and Python is easy to learn"
+words = paragraph.lower().split()
+word_freq = {}
+for word in words:
+    word_freq[word] = word_freq.get(word, 0) + 1
+print("Word frequencies:", word_freq)
+sorted_freq = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)
+print("Sorted by frequency:", sorted_freq)
+
+print()
+
+# Assignment 5: Country Capitals
+capitals = {"India": "New Delhi", "Japan": "Tokyo", "France": "Paris", "Germany": "Berlin"}
+print("Country-Capital pairs:", capitals)
+country = "India"
+print(f"Capital of {country}: {capitals.get(country, 'Not found')}")
+country = "Australia"
+if country not in capitals:
+    capital = "Canberra"
+    capitals[country] = capital
+    print(f"Added {country}: {capital}")
+print("Updated capitals:", capitals)
+
+print()
+
+# Assignment 6: Set Operations on Friends
+my_friends = {"Arjun", "Kavya", "Rohit", "Ananya", "Vikram"}
+your_friends = {"Kavya", "Rohit", "Sita", "Ravi", "Meera"}
+print("My friends:", my_friends)
+print("Your friends:", your_friends)
+print("Friends in both sets (common friends):", my_friends.intersection(your_friends))
+print("Friends only I have:", my_friends.difference(your_friends))
+print("Friends only you have:", your_friends.difference(my_friends))
+
+print()
+
+# Assignment 7: Menu System with Dictionary
+def add_item():
+    print("Item added to inventory")
+
+def view_items():
+    print("Displaying all items in inventory")
+
+def exit_program():
+    print("Exiting program")
+    return False
+
+menu = {1: add_item, 2: view_items, 3: exit_program}
+print("Menu System:")
+print("1 → Add Item")
+print("2 → View Items") 
+print("3 → Exit")
+choice = 2
+if choice in menu:
+    result = menu[choice]()
+    print(f"Executed option {choice}")
+else:
+    print("Invalid choice")
