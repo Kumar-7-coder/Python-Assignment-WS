@@ -1,0 +1,249 @@
+# Assignment 1: Age Validator in Class
+class Person:
+    def __init__(self, name):
+        self.name = name
+        self.age = None
+    
+    def set_age(self, age):
+        if age < 0 or age > 130:
+            raise ValueError("Age must be between 0 and 130.")
+        self.age = age
+
+try:
+    person = Person("John")
+    person.set_age(25)
+    print(f"Age set successfully: {person.age}")
+    person.set_age(-5)
+except ValueError as e:
+    print(f"Error: {e}")
+
+print()
+
+# Assignment 2: Bank Account Withdrawal
+class BankAccount:
+    def __init__(self, balance=0):
+        self.balance = balance
+    
+    def deposit(self, amount):
+        self.balance += amount
+    
+    def withdraw(self, amount):
+        if amount > self.balance:
+            raise ValueError(f"Insufficient funds. Balance: {self.balance}, Withdrawal: {amount}")
+        self.balance -= amount
+
+try:
+    account = BankAccount(1000)
+    account.withdraw(1500)
+except ValueError as e:
+    print(f"Transaction failed: {e}")
+
+print()
+
+# Assignment 3: Student Grade Input
+class Student:
+    def __init__(self, subjects_marks):
+        for subject, mark in subjects_marks.items():
+            if mark < 0 or mark > 100:
+                raise ValueError(f"Mark for {subject} must be between 0 and 100. Got: {mark}")
+        self.subjects_marks = subjects_marks
+
+try:
+    student_marks = {"Math": 85, "English": 92, "Science": 105}
+    student = Student(student_marks)
+except ValueError as e:
+    print(f"Student creation failed: {e}")
+
+try:
+    valid_marks = {"Math": 85, "English": 92, "Science": 78}
+    student = Student(valid_marks)
+    print(f"Student created successfully with marks: {student.subjects_marks}")
+except ValueError as e:
+    print(f"Student creation failed: {e}")
+
+print()
+
+# Assignment 4: Custom Exception Class
+class InsufficientBalanceError(Exception):
+    def __init__(self, message="Insufficient balance"):
+        self.message = message
+        super().__init__(self.message)
+
+class BankAccountCustom:
+    def __init__(self, balance=0):
+        self.balance = balance
+    
+    def withdraw(self, amount):
+        if self.balance < 100:
+            raise InsufficientBalanceError(f"Balance too low: {self.balance}. Minimum balance required: 100")
+        if amount > self.balance:
+            raise InsufficientBalanceError(f"Insufficient funds for withdrawal of {amount}")
+        self.balance -= amount
+
+try:
+    account = BankAccountCustom(50)
+    account.withdraw(25)
+except InsufficientBalanceError as e:
+    print(f"Custom exception caught: {e}")
+
+print()
+
+# Assignment 5: File Reader Class with Exception Handling
+class FileReader:
+    def read_file(self, filename):
+        try:
+            with open(filename, 'r') as file:
+                content = file.read()
+                return content
+        except FileNotFoundError:
+            raise FileNotFoundError(f"File '{filename}' not found")
+
+try:
+    reader = FileReader()
+    content = reader.read_file("nonexistent.txt")
+    print(content)
+except FileNotFoundError as e:
+    print(f"File error: {e}")
+
+print()
+
+# Assignment 6: Password Validator
+class User:
+    def __init__(self):
+        self.password = None
+    
+    def set_password(self, password):
+        if len(password) < 8:
+            raise ValueError("Password must be at least 8 characters long")
+        
+        has_number = any(char.isdigit() for char in password)
+        if not has_number:
+            raise ValueError("Password must contain at least one number")
+        
+        self.password = password
+
+try:
+    user = User()
+    user.set_password("short")
+except ValueError as e:
+    print(f"Password error: {e}")
+
+try:
+    user.set_password("longenoughbutnonumber")
+except ValueError as e:
+    print(f"Password error: {e}")
+
+try:
+    user.set_password("validpass123")
+    print("Password set successfully!")
+except ValueError as e:
+    print(f"Password error: {e}")
+
+print()
+
+# Assignment 7: Temperature Converter with Validation
+class Temperature:
+    def __init__(self, celsius):
+        if celsius < -273.15:
+            raise ValueError("Temperature cannot be below absolute zero (-273.15°C)")
+        self.celsius = celsius
+    
+    def to_fahrenheit(self):
+        return (self.celsius * 9/5) + 32
+    
+    def to_kelvin(self):
+        return self.celsius + 273.15
+
+try:
+    temp = Temperature(-300)
+except ValueError as e:
+    print(f"Temperature error: {e}")
+
+try:
+    temp = Temperature(25)
+    print(f"Temperature: {temp.celsius}°C")
+    print(f"In Fahrenheit: {temp.to_fahrenheit()}°F")
+    print(f"In Kelvin: {temp.to_kelvin()}K")
+except ValueError as e:
+    print(f"Temperature error: {e}")
+
+print()
+
+# Assignment 8: Shopping Cart Quantity Check
+class ShoppingCart:
+    def __init__(self):
+        self.products = {}
+    
+    def add_product(self, product_name, stock_limit):
+        self.products[product_name] = {"stock": stock_limit, "cart_quantity": 0}
+    
+    def add_to_cart(self, product_name, quantity):
+        if product_name not in self.products:
+            raise ValueError(f"Product '{product_name}' not available")
+        
+        product = self.products[product_name]
+        new_quantity = product["cart_quantity"] + quantity
+        
+        if new_quantity > product["stock"]:
+            raise ValueError(f"Cannot add {quantity} {product_name}. Stock limit: {product['stock']}, Current in cart: {product['cart_quantity']}")
+        
+        product["cart_quantity"] = new_quantity
+
+try:
+    cart = ShoppingCart()
+    cart.add_product("Laptop", 5)
+    cart.add_to_cart("Laptop", 3)
+    print("Added 3 laptops to cart")
+    cart.add_to_cart("Laptop", 3)
+except ValueError as e:
+    print(f"Shopping cart error: {e}")
+
+print()
+
+# Assignment 9: Exam Hall Allocation
+class ExamHall:
+    def __init__(self, max_capacity):
+        self.max_capacity = max_capacity
+        self.allocated_students = 0
+    
+    def allocate_students(self, num_students):
+        if self.allocated_students + num_students > self.max_capacity:
+            raise ValueError(f"Cannot allocate {num_students} students. Hall capacity: {self.max_capacity}, Already allocated: {self.allocated_students}")
+        self.allocated_students += num_students
+
+try:
+    hall = ExamHall(50)
+    hall.allocate_students(30)
+    print(f"Allocated 30 students. Remaining capacity: {hall.max_capacity - hall.allocated_students}")
+    hall.allocate_students(25)
+except ValueError as e:
+    print(f"Hall allocation error: {e}")
+
+print()
+
+# Assignment 10: Flight Booking Validation
+class FlightBooking:
+    def __init__(self, passenger_name, age):
+        if age < 0 or age > 100:
+            raise ValueError("Age must be between 0 and 100")
+        self.passenger_name = passenger_name
+        self.age = age
+    
+    def display_booking(self):
+        return f"Booking for {self.passenger_name}, Age: {self.age}"
+
+try:
+    booking1 = FlightBooking("John Doe", -5)
+except ValueError as e:
+    print(f"Booking error: {e}")
+
+try:
+    booking2 = FlightBooking("Jane Smith", 150)
+except ValueError as e:
+    print(f"Booking error: {e}")
+
+try:
+    booking3 = FlightBooking("Alice Johnson", 25)
+    print(f"Flight booking successful: {booking3.display_booking()}")
+except ValueError as e:
+    print(f"Booking error: {e}")
