@@ -1,0 +1,87 @@
+# 1. Safe Division Calculator - Ask the user to input two numbers and divide them. Handle ZeroDivisionError and ValueError.
+try:
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = num1 / num2
+    print(f"Result: {result}")
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero!")
+except ValueError:
+    print("Error: Please enter valid numbers!")
+
+# 2. File Reader with Exception - Open a file input by the user. Show custom messages if the file is not found.
+try:
+    filename = input("Enter filename: ")
+    with open(filename, 'r') as file:
+        content = file.read()
+        print("File content:")
+        print(content)
+except FileNotFoundError:
+    print("Error: File not found!")
+except PermissionError:
+    print("Error: Permission denied to access file!")
+
+# 3. Student Marks Entry - Ask the user to enter marks. If they input a non-number, show "Invalid marks".
+try:
+    marks = float(input("Enter student marks: "))
+    if 0 <= marks <= 100:
+        print(f"Marks entered: {marks}")
+    else:
+        print("Marks should be between 0 and 100")
+except ValueError:
+    print("Invalid marks")
+
+# 4. Login Attempt Checker - Create a login system. If the username is not found in a dictionary, handle the KeyError.
+users = {"admin": "password123", "user1": "mypass", "john": "john123"}
+try:
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    if users[username] == password:
+        print("Login successful!")
+    else:
+        print("Invalid password!")
+except KeyError:
+    print("Error: Username not found!")
+
+# 5. Bank Withdrawal Program - If the user tries to withdraw more money than available, raise a custom ValueError.
+class InsufficientFundsError(ValueError):
+    pass
+
+def withdraw_money():
+    balance = 1000
+    try:
+        amount = float(input("Enter withdrawal amount: "))
+        if amount > balance:
+            raise InsufficientFundsError("Insufficient funds!")
+        balance -= amount
+        print(f"Withdrawal successful! Remaining balance: ${balance}")
+    except InsufficientFundsError as e:
+        print(f"Error: {e}")
+    except ValueError:
+        print("Error: Please enter a valid amount!")
+
+withdraw_money()
+
+# 6. List Index Access - Access an element at a user-given index in a list. Handle IndexError.
+my_list = [10, 20, 30, 40, 50]
+try:
+    index = int(input("Enter index to access: "))
+    element = my_list[index]
+    print(f"Element at index {index}: {element}")
+except IndexError:
+    print("Error: Index out of range!")
+except ValueError:
+    print("Error: Please enter a valid integer!")
+
+# 7. Division with Finally Block - Perform division, but make sure "Thank you for using calculator" is always printed with finally.
+try:
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+    result = num1 / num2
+    print(f"Result: {result}")
+except ZeroDivisionError:
+    print("Error: Cannot divide by zero!")
+except ValueError:
+    print("Error: Invalid input!")
+finally:
+    print("Thank you for using calculator")
