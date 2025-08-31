@@ -1,0 +1,32 @@
+# Assignment 1: Create a file "notes.txt" and write "Learning Python File I/O"
+with open("notes.txt", "w") as file:
+    file.write("Learning Python File I/O")
+
+# Assignment 2: Append "Day 24 session" into the same file
+with open("notes.txt", "a") as file:
+    file.write("Day 24 session")
+
+# Assignment 3: Read the file and print its content line by line
+with open("notes.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+# Assignment 4: Create a binary file and write "Hello123" to it
+with open("data.bin", "wb") as file:
+    file.write(b"Hello123")
+
+# Assignment 5: Write a program that counts number of lines in a file
+with open("notes.txt", "r") as file:
+    lines = file.readlines()
+    line_count = len(lines)
+    print(f"Number of lines: {line_count}")
+
+# Assignment 6: Write a program that copies content from one file to another (source.txt → backup.txt)
+with open("source.txt", "w") as file:
+    file.write("This is source content")
+
+with open("source.txt", "r") as source:
+    content = source.read()
+
+with open("backup.txt", "w") as backup:
+    backup.write(content)
