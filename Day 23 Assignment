@@ -1,0 +1,27 @@
+# Assignment 1: Print today's date and time in DD/MM/YYYY HH:MM format
+from datetime import datetime
+now = datetime.now()
+formatted_date = now.strftime("%d/%m/%Y %H:%M")
+print(formatted_date)
+
+# Assignment 2: Write a program to print current time every 5 seconds (3 times)
+import time
+for i in range(3):
+    current_time = datetime.now().strftime("%H:%M:%S")
+    print(current_time)
+    time.sleep(5)
+
+# Assignment 3: Convert "HELLO world" → "hello WORLD"
+text = "HELLO world"
+converted = text.swapcase()
+print(converted)
+
+# Assignment 4: Count occurrences of "Python" in "Python is great. Python is fun!"
+sentence = "Python is great. Python is fun!"
+count = sentence.count("Python")
+print(count)
+
+# Assignment 5: Create a timestamped filename like report_2025-08-19_15-30.txt
+from datetime import datetime
+timestamp = datetime.now().strftime("report_%Y-%m-%d_%H-%M.txt")
+print(timestamp)
