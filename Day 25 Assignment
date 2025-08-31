@@ -1,0 +1,89 @@
+# Assignment 1: Read a text file line by line and print only lines containing the word "Python"
+with open("python_content.txt", "w") as file:
+    file.write("Raj loves Python programming\nPriya studies Java\nArjun uses Python for data science\nSunita prefers C++\n")
+
+with open("python_content.txt", "r") as file:
+    for line in file:
+        if "Python" in line:
+            print(line.strip())
+
+# Assignment 2: Write a list of fruits into fruits.txt, one fruit per line, then read back and print them
+fruits = ["mango", "banana", "guava", "coconut", "pomegranate"]
+with open("fruits.txt", "w") as file:
+    for fruit in fruits:
+        file.write(fruit + "\n")
+
+with open("fruits.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+# Assignment 3: Use JSON to save employee details (name, id, department), then read it back and display
+import json
+
+employee_data = {
+    "name": "Vikram Sharma",
+    "id": 1001,
+    "department": "Engineering"
+}
+
+with open("employee.json", "w") as file:
+    json.dump(employee_data, file)
+
+with open("employee.json", "r") as file:
+    data = json.load(file)
+    print(data)
+
+# Assignment 4: Write a program to count the number of lines, words, and characters in story.txt
+with open("story.txt", "w") as file:
+    file.write("Meera went to the market.\nShe bought vegetables and fruits.\nKunal helped her carry the bags.")
+
+with open("story.txt", "r") as file:
+    content = file.read()
+    lines = content.split('\n')
+    words = content.split()
+    characters = len(content)
+    
+    print(f"Lines: {len(lines)}")
+    print(f"Words: {len(words)}")
+    print(f"Characters: {characters}")
+
+# Assignment 5: Append 5 new quotes to quotes.txt without overwriting old content
+quotes = [
+    "Success is the sum of small efforts. - Ravi Teja",
+    "Dream big and dare to fail. - Anjali Kapoor", 
+    "The only way to do great work is to love what you do. - Suresh Kumar",
+    "Innovation distinguishes between a leader and a follower. - Deepika Singh",
+    "Your limitation is only your imagination. - Rohit Gupta"
+]
+
+with open("quotes.txt", "a") as file:
+    for quote in quotes:
+        file.write(quote + "\n")
+
+# Assignment 6: Write a student gradebook where each line has Name: Grade format
+students = {
+    "Aarav": 90,
+    "Kavya": 85,
+    "Ishaan": 92,
+    "Diya": 88,
+    "Aryan": 95
+}
+
+with open("gradebook.txt", "w") as file:
+    for name, grade in students.items():
+        file.write(f"{name}: {grade}\n")
+
+with open("gradebook.txt", "r") as file:
+    print(file.read())
+
+# Assignment 7: Read a large text file and display the first 10 lines only (like Linux head command)
+with open("large_file.txt", "w") as file:
+    for i in range(20):
+        file.write(f"This is line {i+1} written by Pradeep Kumar\n")
+
+with open("large_file.txt", "r") as file:
+    for i, line in enumerate(file):
+        if i < 10:
+            print(line.strip())
+        else:
+            break
