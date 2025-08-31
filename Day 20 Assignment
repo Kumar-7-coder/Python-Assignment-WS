@@ -1,0 +1,91 @@
+# Assignment 1: First and Last Character
+def first_and_last_character(s):
+    return s[0] + s[-1]
+
+string = "hello"
+result = first_and_last_character(string)
+print(f"First and last character: {result}")
+
+# Assignment 2: List Reversal
+def reverse_list(lst):
+    return lst[::-1]
+
+my_list = [1, 2, 3, 4, 5]
+reversed_list = reverse_list(my_list)
+print(f"Reversed list: {reversed_list}")
+
+# Assignment 3: Extract Middle Elements
+numbers = [10, 20, 30, 40, 50, 60, 70]
+middle_elements = numbers[3:6]
+print(f"Middle elements [30, 40, 50]: {middle_elements}")
+
+# Assignment 4: Odd Indexed Characters
+def odd_indexed_characters(s):
+    return s[1::2]
+
+text = "PYTHONPROGRAMMING"
+odd_chars = odd_indexed_characters(text)
+print(f"Odd indexed characters: {odd_chars}")
+
+# Assignment 5: Sort Words Alphabetically
+def sort_words_alphabetically(words):
+    ascending = sorted(words)
+    descending = sorted(words, reverse=True)
+    return ascending, descending
+
+word_list = ["python", "java", "javascript", "c++", "ruby"]
+asc, desc = sort_words_alphabetically(word_list)
+print(f"Ascending order: {asc}")
+print(f"Descending order: {desc}")
+
+# Assignment 6: Sort by String Length
+def sort_by_length(words):
+    return sorted(words, key=len)
+
+fruits = ["apple", "kiwi", "banana"]
+sorted_fruits = sort_by_length(fruits)
+print(f"Sorted by length: {sorted_fruits}")
+
+# Assignment 7: Sort by Second Element
+def sort_by_second_element(tuples):
+    return sorted(tuples, key=lambda x: x[1])
+
+tuple_list = [(1, 5), (3, 1), (2, 4)]
+sorted_tuples = sort_by_second_element(tuple_list)
+print(f"Sorted by second element: {sorted_tuples}")
+
+# All examples run together
+print("\n" + "="*50)
+print("RUNNING ALL ASSIGNMENTS:")
+print("="*50)
+
+print("\n1. First and Last Character:")
+test_string = "python"
+print(f"Input: '{test_string}' -> Output: '{first_and_last_character(test_string)}'")
+
+print("\n2. List Reversal:")
+test_list = [10, 20, 30, 40]
+print(f"Input: {test_list} -> Output: {reverse_list(test_list)}")
+
+print("\n3. Extract Middle Elements:")
+numbers = [10, 20, 30, 40, 50, 60, 70]
+print(f"Input: {numbers} -> Middle [30,40,50]: {numbers[3:6]}")
+
+print("\n4. Odd Indexed Characters:")
+text = "PYTHONPROGRAMMING"
+print(f"Input: '{text}' -> Odd indexed: '{odd_indexed_characters(text)}'")
+
+print("\n5. Sort Words Alphabetically:")
+words = ["zebra", "apple", "banana"]
+asc, desc = sort_words_alphabetically(words)
+print(f"Input: {words}")
+print(f"Ascending: {asc}")
+print(f"Descending: {desc}")
+
+print("\n6. Sort by String Length:")
+fruits = ["apple", "kiwi", "banana"]
+print(f"Input: {fruits} -> Sorted by length: {sort_by_length(fruits)}")
+
+print("\n7. Sort by Second Element:")
+tuples = [(1, 5), (3, 1), (2, 4)]
+print(f"Input: {tuples} -> Sorted by 2nd element: {sort_by_second_element(tuples)}")
