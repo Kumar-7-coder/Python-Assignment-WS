@@ -1,0 +1,117 @@
+-- Assignment 1: Insert 5 new student records into the database
+INSERT INTO students (name, age, grade, email) VALUES
+('Alice Johnson', 20, 'A', 'alice.johnson@email.com'),
+('Bob Smith', 22, 'B', 'bob.smith@email.com'),
+('Carol Brown', 19, 'A', 'carol.brown@email.com'),
+('David Wilson', 21, 'C', 'david.wilson@email.com'),
+('Emma Davis', 20, 'B', 'emma.davis@email.com');
+
+-- Assignment 2: Fetch and print only student names and grades
+SELECT name, grade FROM students;
+
+-- Assignment 3: Update the grade of a student with id = 2
+UPDATE students SET grade = 'A' WHERE id = 2;
+
+-- Assignment 4: Delete all students older than 25 years
+DELETE FROM students WHERE age > 25;
+
+-- Assignment 5: Handle exceptions when inserting a record with a missing field
+-- This would typically be handled in application code with try-catch blocks
+-- Example in Python with SQLite:
+/*
+import sqlite3
+
+try:
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    
+    # This will cause an error if a required field is missing
+    cursor.execute("INSERT INTO students (name, grade) VALUES (?, ?)", 
+                   ("John Doe", "A"))  # Missing age field
+    conn.commit()
+    print("Record inserted successfully")
+    
+except sqlite3.IntegrityError as e:
+    print(f"Error inserting record: {e}")
+    print("Please ensure all required fields are provided")
+    
+except Exception as e:
+    print(f"Unexpected error: {e}")
+    
+finally:
+    if conn:
+        conn.close()
+*/
+
+-- Assignment 6: Write a function get_students_by_grade(grade) that fetches all students with that grade
+-- SQL Function (PostgreSQL/MySQL syntax):
+DELIMITER //
+CREATE FUNCTION get_students_by_grade(input_grade VARCHAR(2))
+RETURNS TABLE(
+    student_id INT,
+    student_name VARCHAR(100),
+    student_age INT,
+    student_grade VARCHAR(2),
+    student_email VARCHAR(100)
+)
+READS SQL DATA
+BEGIN
+    RETURN (SELECT id, name, age, grade, email 
+            FROM students 
+            WHERE grade = input_grade);
+END //
+DELIMITER ;
+
+-- To call the function:
+-- SELECT * FROM get_students_by_grade('A');
+
+-- Alternative as a stored procedure (works in most databases):
+DELIMITER //
+CREATE PROCEDURE get_students_by_grade(IN input_grade VARCHAR(2))
+BEGIN
+    SELECT id, name, age, grade, email 
+    FROM students 
+    WHERE grade = input_grade;
+END //
+DELIMITER ;
+
+-- To call the procedure:
+-- CALL get_students_by_grade('A');
+
+-- Assignment 7: Create a small Bank Account DB with fields: account_no, name, balance
+-- Perform insert, deposit (update), withdraw (update), and delete account
+
+-- Create the bank_accounts table
+CREATE TABLE bank_accounts (
+    account_no INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    balance DECIMAL(10, 2) NOT NULL DEFAULT 0.00
+);
+
+-- Insert new accounts
+INSERT INTO bank_accounts (account_no, name, balance) VALUES
+(1001, 'John Doe', 1500.00),
+(1002, 'Jane Smith', 2500.50),
+(1003, 'Mike Johnson', 750.25);
+
+-- Deposit operation (update to add money)
+UPDATE bank_accounts 
+SET balance = balance + 500.00 
+WHERE account_no = 1001;
+
+-- Withdraw operation (update to subtract money)
+UPDATE bank_accounts 
+SET balance = balance - 200.00 
+WHERE account_no = 1002 AND balance >= 200.00;
+
+-- Delete account
+DELETE FROM bank_accounts WHERE account_no = 1003;
+
+-- More robust withdraw with balance check
+UPDATE bank_accounts 
+SET balance = balance - 300.00 
+WHERE account_no = 1001 
+AND balance >= 300.00;
+
+-- View all accounts
+SELECT * FROM bank_accounts;
