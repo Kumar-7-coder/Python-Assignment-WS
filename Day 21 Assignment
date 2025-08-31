@@ -1,0 +1,71 @@
+# Assignment 1: First and Last Character
+s = "hello"
+result = s[0] + s[-1]
+print(result)
+
+# Assignment 2: List Reversal
+lst = [1, 2, 3, 4, 5]
+reversed_list = lst[::-1]
+print(reversed_list)
+
+# Assignment 3: Extract Middle Elements
+numbers = [10, 20, 30, 40, 50, 60, 70]
+middle_elements = numbers[3:6]
+print(middle_elements)
+
+# Assignment 4: Odd Indexed Characters
+text = "PYTHONPROGRAMMING"
+odd_chars = text[1::2]
+print(odd_chars)
+
+# Assignment 5: Sort Words Alphabetically
+words = ["zebra", "apple", "banana"]
+ascending = sorted(words)
+descending = sorted(words, reverse=True)
+print(ascending)
+print(descending)
+
+# Assignment 6: Sort by String Length
+fruits = ["apple", "kiwi", "banana"]
+sorted_by_length = sorted(fruits, key=len)
+print(sorted_by_length)
+
+# Assignment 7: Sort by Second Element
+tuples = [(1, 5), (3, 1), (2, 4)]
+sorted_tuples = sorted(tuples, key=lambda x: x[1])
+print(sorted_tuples)
+
+# Assignment 8: Access Specific Element
+data = [[1, 2], [3, 4], [5, 6]]
+element = data[1][1]
+print(element)
+
+# Assignment 9: First Column Extraction
+marks = [[90, 80], [85, 75], [88, 95]]
+first_column = [row[0] for row in marks]
+print(first_column)
+
+# Assignment 10: Update Value
+marks = [[90, 80], [85, 75], [88, 95]]
+marks[1][0] = 85
+print(marks)
+
+# Assignment 11: Add a Row
+marks = [[90, 80], [85, 75], [88, 95]]
+marks.append([92, 88])
+print(marks)
+
+# Assignment 12: Sum of All Elements
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+total = sum(sum(row) for row in matrix)
+print(total)
+
+# Assignment 13: Transpose a Matrix
+matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+transposed = [[matrix[j][i] for j in range(len(matrix))] for i in range(len(matrix[0]))]
+print(transposed)
+
+# Assignment 14: 3x3 Tic-Tac-Toe Board
+board = [["_" for _ in range(3)] for _ in range(3)]
+board[1][1] = "X"
+print(board)
